@@ -1,0 +1,173 @@
+{
+    "type": "root",
+    "children": [
+      {
+        "type": "heading",
+        "depth": 1,
+        "children": [
+          {
+            "type": "text",
+            "value": "src/components/Table/interface.ts",
+            "position": {
+              "start": {
+                "line": 1,
+                "column": 3,
+                "offset": 2
+              },
+              "end": {
+                "line": 1,
+                "column": 36,
+                "offset": 35
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 36,
+            "offset": 35
+          }
+        }
+      },
+      {
+        "type": "code",
+        "lang": "typescript",
+        "meta": null,
+        "value": "interface TableProps {\n  data: Array<{\n    name: string;\n    age: number;\n    email: string;\n  }>;\n}\n\nexport type { TableProps };",
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 1,
+            "offset": 37
+          },
+          "end": {
+            "line": 13,
+            "column": 4,
+            "offset": 184
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 1,
+        "children": [
+          {
+            "type": "text",
+            "value": "src/components/Table/Table.tsx",
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 3,
+                "offset": 188
+              },
+              "end": {
+                "line": 15,
+                "column": 33,
+                "offset": 218
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 15,
+            "column": 1,
+            "offset": 186
+          },
+          "end": {
+            "line": 15,
+            "column": 33,
+            "offset": 218
+          }
+        }
+      },
+      {
+        "type": "code",
+        "lang": "typescript",
+        "meta": null,
+        "value": "import React from 'react';\nimport { Table } from 'antd';\nimport { TableProps } from './interface';\nimport './styles.scss';\n\nconst CustomTable: React.FC<TableProps> = ({ data }) => {\n  const columns = [\n    {\n      title: 'Name',\n      dataIndex: 'name',\n      key: 'name'\n    },\n    {\n      title: 'Age',\n      dataIndex: 'age',\n      key: 'age'\n    },\n    {\n      title: 'Email',\n      dataIndex: 'email',\n      key: 'email'\n    }\n  ];\n  \n  return (\n    <Table columns={columns} dataSource={data} />\n  );\n};\n\nexport default CustomTable;",
+        "position": {
+          "start": {
+            "line": 17,
+            "column": 1,
+            "offset": 220
+          },
+          "end": {
+            "line": 48,
+            "column": 4,
+            "offset": 775
+          }
+        }
+      },
+      {
+        "type": "heading",
+        "depth": 1,
+        "children": [
+          {
+            "type": "text",
+            "value": "src/components/Table/styles.scss",
+            "position": {
+              "start": {
+                "line": 50,
+                "column": 3,
+                "offset": 779
+              },
+              "end": {
+                "line": 50,
+                "column": 35,
+                "offset": 811
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 50,
+            "column": 1,
+            "offset": 777
+          },
+          "end": {
+            "line": 50,
+            "column": 35,
+            "offset": 811
+          }
+        }
+      },
+      {
+        "type": "code",
+        "lang": "scss",
+        "meta": null,
+        "value": "//请根据具体需要添加样式",
+        "position": {
+          "start": {
+            "line": 52,
+            "column": 1,
+            "offset": 813
+          },
+          "end": {
+            "line": 54,
+            "column": 4,
+            "offset": 838
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 54,
+        "column": 4,
+        "offset": 838
+      }
+    }
+  }
