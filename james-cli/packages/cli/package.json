@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@james-cli/create": "workspace:^",
+    "@james-cli/generate": "workspace:^",
     "commander": "^12.1.0",
     "fs-extra": "^11.2.0"
   },

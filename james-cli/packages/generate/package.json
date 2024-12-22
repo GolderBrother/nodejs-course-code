@@ -12,11 +12,17 @@
     "dev": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "abcd": {
+    "apiKey": "111",
+    "baseUrl": "222",
+    "systemContent": "333"   
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@inquirer/prompts": "^7.2.1",
+    "cosmiconfig": "^9.0.0",
     "fs-extra": "^11.2.0",
     "openai": "^4.77.0",
     "ora": "^8.1.1",
