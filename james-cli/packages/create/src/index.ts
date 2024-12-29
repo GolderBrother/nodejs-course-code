@@ -11,6 +11,13 @@ function sleep(timeout: number) {
         setTimeout(resolve, timeout);
     }));
 }
+
+/**
+ * 用户选择一个模版，填入项目名后，从 npm 仓库下载对应的模版到 home 下的一个目录，然后复制模版到目标目录。
+ * 通过 ejs 模版引擎的渲染，来填充数据到 package.json 中的一些地方。
+ * 我们还支持了 eslint 等的是否启用，不启用的话就不渲染对应的内容，以及删除 eslint.config.js。
+ * 当公司项目比较多的时候，都会沉淀一些自己的项目模版，所以每个大公司都有这样的脚手架 cli 工具
+ */
 async function create() {
     // console.log('create 命令执行中...')  
     
