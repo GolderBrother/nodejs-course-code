@@ -1,5 +1,16 @@
 # @james-cli/cli
 
+## 0.3.0
+
+### Minor Changes
+
+- implement create feature
+
+### Patch Changes
+
+- Updated dependencies
+  - @james-cli/create@0.2.0
+
 ## 0.2.0
 
 ### Minor Changes
