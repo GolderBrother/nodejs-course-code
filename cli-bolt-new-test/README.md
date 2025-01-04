@@ -1,6 +1,8 @@
 # cli 网站生成器
 
 ## 12-29
+http://116.198.230.195/book/671a06ce86f18b36b75f0d91
+
 单独画了下 cli 版 bolt.new 网站生成器用到的 UI。
 
 用 clack 做的表单，比 prompts、inquirer 好看一些。
