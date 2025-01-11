@@ -14,8 +14,8 @@ async function main() {
     messages: [
       {role: 'system', content: fs.readFileSync(resolve(__dirname, 'system.md'), 'utf-8')},
       {role: 'user', content: '生成一个 Table 的 React 组件'},
-      {role: 'assistant', content: fs.readFileSync(resolve(__dirname, 'response1.md'), 'utf-8')},
-      {role: 'user', content: '在这个基础上加上 sass 写下样式，并且不要用 table，有 name、age、email 三列，数据是参数传入的'}
+      {role: 'assistant', content: fs.readFileSync(resolve(__dirname, 'response-vue.md'), 'utf-8')},
+      {role: 'user', content: '在这个基础上加上 less 写下样式，并且不要用 table，有 name、age、email 三列，数据是参数传入的'}
     ],
     tools: [
       {
@@ -50,8 +50,8 @@ async function main() {
     ],
     // stream: true
   });
-
-  console.log(stream.choices[0].message.tool_calls[0].function)
+  const code = stream.choices[0].message.tool_calls[0].function 
+  console.log(`code`, code)
 
 }
 
