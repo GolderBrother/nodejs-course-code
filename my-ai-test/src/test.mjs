@@ -1,19 +1,19 @@
 import fs from 'node:fs';
 
 const res = {
-    name: 'getCode',
-    arguments: '{\n' +
-      `"code1": "export { default as UserTable } from './UserTable';\\nexport type { UserTableProps } from './interface';\\n",\n` +
-      '"code2": "interface UserTableProps {\\n    users: {\\n        name: string;\\n        age: number;\\n        email: string;\\n    }[];\\n}\\nexport type { UserTableProps };\\n",\n' +
-      `"code3": "import React from 'react';\\nimport { UserTableProps } from './interface';\\nimport './styles.scss';\\n\\nconst UserTable: React.FC<UserTableProps> = ({users}) => {\\n    return (\\n        <div className='user-table'>\\n            <div className='user-table-row user-table-header'>\\n                <div className='user-table-cell'>Name</div>\\n                <div className='user-table-cell'>Age</div>\\n                <div className='user-table-cell'>Email</div>\\n            </div>\\n            {users.map((user, index) => (\\n                <div key={index} className='user-table-row'>\\n                    <div className='user-table-cell'>{user.name}</div>\\n                    <div className='user-table-cell'>{user.age}</div>\\n                    <div className='user-table-cell'>{user.email}</div>\\n                </div>\\n            ))}\\n        </div>\\n    )\\n};\\n\\nexport default UserTable;\\n",\n` +
-      '"code4": ".user-table {\\n    display: flex;\\n    flex-direction: column;\\n    margin: 20px;\\n}\\n\\n.user-table-row {\\n    display: flex;\\n}\\n\\n.user-table-row.user-table-header {\\n    font-weight: bold;\\n}\\n\\n.user-table-cell {\\n    flex: 1;\\n    padding: 10px;\\n    border: 1px solid #ddd;\\n}\\n"\n' +
-      '}'
-  }
+  name: 'getCode',
+  arguments: '{\n' +
+    `  "Table.tsx": "import React from 'react';\\nimport './style.less';\\n\\ninterface User {\\nname: string;\\nage: number;\\nemail: string;\\n}\\n\\ninterface TableProps {\\nusers: User[];\\n}\\n\\nconst Table: React.FC<TableProps> = ({ users }) => {\\nreturn (\\n<div className='table'>\\n<div className='table-row table-header'>\\n<div className='table-cell'>Name</div>\\n<div className='table-cell'>Age</div>\\n<div className='table-cell'>Email</div>\\n</div>\\n{users.map((user, index) => (\\n<div key={index} className='table-row'>\\n<div className='table-cell'>{user.name}</div>\\n<div className='table-cell'>{user.age}</div>\\n<div className='table-cell'>{user.email}</div>\\n</div>\\n))}\\n</div>\\n);\\n};\\n\\nexport default Table;",\n` +
+    `  "index.ts": "export { default } from './Table';",\n` +
+    '  "style.less": ".table {\\nwidth: 100%;\\ndisplay: flex;\\nflex-direction: column;\\n}\\n\\n.table-header {\\nfont-weight: bold;\\n}\\n\\n.table-row {\\ndisplay: flex;\\n}\\n\\n.table-cell {\\nflex: 1;\\npadding: 10px;\\nborder: 1px solid #ccc;\\n}",\n' +
+    '  "types.ts": "export interface User {\\nname: string;\\nage: number;\\nemail: string;\\n}\\n\\nexport interface TableProps {\\nusers: User[];\\n}\\n\\nexport type { TableProps };"\n' +
+    '}'
+}
 
 const codes = JSON.parse(res.arguments);
 
 fs.mkdirSync('./Table');
-fs.writeFileSync('./Table/index.ts', codes.code1);
-fs.writeFileSync('./Table/interface.ts', codes.code2);
-fs.writeFileSync('./Table/UserTable.tsx', codes.code3);
-fs.writeFileSync('./Table/styles.scss', codes.code4);
+fs.writeFileSync('./Table/index.ts', codes['index.ts']);
+fs.writeFileSync('./Table/interface.ts', codes['types.ts']);
+fs.writeFileSync('./Table/UserTable.tsx', codes['Table.tsx']);
+fs.writeFileSync('./Table/style.less', codes['style.less']);

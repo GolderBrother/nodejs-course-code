@@ -1,19 +1,20 @@
 import OpenAI from 'openai';
 import fs from 'node:fs';
-import { resolve } from 'node:path';
+import { resolve, dirname } from 'node:path';
 
 const client = new OpenAI({
-  apiKey: 'sk-Bf8HPENO8LrRjbetYz8IGNFj4mD0O6qDWu7yz5pGZFGY8m1k',
+  apiKey: '',
   baseURL: 'https://api.302.ai/v1'
 });
 
 async function main() {
+  const __dirname = dirname(new URL(import.meta.url).pathname);
   const stream = await client.chat.completions.create({
     model: "gpt-4",
     messages: [
-      {role: 'system', content: fs.readFileSync(resolve('../system.md'), 'utf-8')},
+      {role: 'system', content: fs.readFileSync(resolve(__dirname, 'system.md'), 'utf-8')},
       {role: 'user', content: '生成一个 Table 的 React 组件'},
-      {role: 'assistant', content: fs.readFileSync('./response1.md', 'utf-8')},
+      {role: 'assistant', content: fs.readFileSync(resolve(__dirname, 'response1.md'), 'utf-8')},
       {role: 'user', content: '在这个基础上加上 sass 写下样式，并且不要用 table，有 name、age、email 三列，数据是参数传入的'}
     ],
     tools: [
@@ -25,24 +26,24 @@ async function main() {
           parameters: {
             type: "object",
             properties: {
-              code1: {
+              'index.ts': {
                 type: "string",
                 description: "生成的 index.ts 代码"
               },
-              code2: {
+              'types.ts': {
                 type: "string",
-                description: "生成的 interface.ts 代码"
+                description: "生成的 types.ts 代码"
               },
-              code3: {
+              '[组件名].tsx': {
                 type: "string",
                 description: "生成的 [组件名].tsx 代码"
               },
-              code4: {
+              'style.less': {
                 type: "string",
-                description: "生成的 styles.ts 代码"
+                description: "生成的 style.less 代码"
               },
             },
-            required: ["code1", 'code2', 'code3', 'code4']
+            required: ["index.ts", 'types.ts', '[组件名].tsx', 'style.less']
           }
         }
       },
